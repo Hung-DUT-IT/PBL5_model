@@ -2,9 +2,9 @@ from keras_facenet import FaceNet
 import numpy as np
 
 class EXTRACT_EMBEDDING:
-    def __init__(self, face):
+    def __init__(self, faces):
         self.model = FaceNet()
-        self.FACE = face
+        self.FACEs = faces
 
     def get_embedding(self, face_img):
 
@@ -15,7 +15,7 @@ class EXTRACT_EMBEDDING:
 
     def get_embeddings(self):
         EMBEDDED_X = []
-        for face in self.FACE:
+        for face in self.FACEs:
             EMBEDDED_X.append(self.get_embedding(face))
 
         return np.asarray(EMBEDDED_X)

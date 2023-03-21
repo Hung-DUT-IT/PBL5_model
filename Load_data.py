@@ -18,21 +18,30 @@ class LOAD_DATA:
         
         for root, dirs, files in os.walk(Raw_img_dir):
             for file in files:
-                if file.endswith("jpg") or file.endswith("jpeg") or file.endswith("png"):
+                if file.endswith("mp4"):
                     path = os.path.join(root, file )                           
                     label = os.path.basename(root)
-                    
+                    print(path , label)
                     if not label in label_ids:
                         label_ids[label] = current_id
                         current_id += 1
                     _id = label_ids[label]
-                    single_face = self.detector.extract_face(path)
 
-                    self.X_train.append(single_face)
+                    single_faces = self.detector.extract_face(path)
+
+                    self.X_train.append(single_faces)
                     self.Y_label.append(_id)
 
                     directory_path = os.path.join(Raw_img_dir.replace("raw","processed"), label)
                     os.makedirs(directory_path, exist_ok=True)
-                    cv.imwrite(os.path.join(directory_path, os.path.basename(file)), single_face)
+
+                    for i, face in enumerate(single_faces): 
+                        new_filename = os.path.join(directory_path, os.path.splitext(file)[0]) + str(i) + ".png"
+    
+                        cv.imwrite(new_filename, face)
                     
         return np.asarray(self.X_train), np.asarray(self.Y_label)
+
+if __name__ == "__main__":
+    detection = LOAD_DATA()
+    print(detection.load_faces())

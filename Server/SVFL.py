@@ -3,6 +3,8 @@ import numpy as np
 import cv2
 import os
 from multiprocessing import Value
+
+
 app = Flask(__name__)
 counter = Value('i', 0)
 
@@ -25,7 +27,7 @@ def index():
 @app.route('/upload', methods=['POST','GET'])
 def upload():
 	received = request
-	img = None
+	img = None	
 	if received.files:
 		print(received.files['imageFile'])
 		# convert string of image data to uint8

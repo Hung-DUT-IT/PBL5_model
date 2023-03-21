@@ -5,6 +5,8 @@ from keras_facenet import FaceNet
 import matplotlib.pyplot as plt
 detector = MTCNN()
 embedder = FaceNet()
+
+
 file_name = "C:/Users/huuhu/Data_Analytics/PBL/PBL5_model/DataSet/raw/TranThanh/img_6.jpg"
 img = cv.imread(file_name)
 img = cv.cvtColor(img, cv.COLOR_BGR2RGB)
