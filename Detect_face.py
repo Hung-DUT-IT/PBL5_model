@@ -12,8 +12,12 @@ class DETECTION:
         video = cv.VideoCapture(path)
 
         count = 0
-        while video.isOpened() and count < 20:
+        t = 0
+        while video.isOpened() and count < 100:
+            t += 1
             ret, frame = video.read()
+            if t % 2 != 0:
+                continue
             if ret:
                 rgb_frame = cv.cvtColor(frame, cv.COLOR_BGR2RGB)            
                 faces = self.detector.detect_faces(rgb_frame)

@@ -36,9 +36,9 @@ class LOAD_DATA:
                     os.makedirs(directory_path, exist_ok=True)
 
                     for i, face in enumerate(single_faces): 
-                        new_filename = os.path.join(directory_path, os.path.splitext(file)[0]) + str(i) + ".png"
+                        new_filename = os.path.join(directory_path, os.path.splitext(file)[0]) + str(i) + ".jpg" #jpeg/jpg
     
-                        cv.imwrite(new_filename, face)
+                        cv.imwrite(new_filename, cv.cvtColor(face,cv.COLOR_RGB2BGR))
                     
         return np.asarray(self.X_train), np.asarray(self.Y_label)
 
