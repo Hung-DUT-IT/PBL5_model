@@ -4,10 +4,10 @@
 #include "soc/rtc_cntl_reg.h"
 #include "esp_camera.h"
 
-const char* ssid = "H";
+const char* ssid = "BTR_5G";
 const char* password = "1233456789";
 
-String serverName = "192.168.43.215";   
+String serverName = "192.168.1.10";   
 //String serverName = "example.com";   
 
 String serverPath = "/upload";  // Flask upload route
