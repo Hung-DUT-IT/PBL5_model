@@ -125,5 +125,9 @@ venv.bak/
 .dmypy.json
 dmypy.json
 
+dataset_faces_32cls.npz
+best_weights.h5
+
 # Pyre type checker
 .pyre/
+.gitignore
